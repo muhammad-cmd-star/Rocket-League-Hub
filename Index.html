@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rocket League Pro Gaming Hub</title>
+<style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #0b0c10; color: #c5c6c7; }
+    header { background: #1f2833; padding: 20px; text-align: center; }
+    header h1 { margin: 0; color: #66fcf1; }
+    nav { display: flex; justify-content: center; background: #45a29e; }
+    nav a { color: #0b0c10; text-decoration: none; padding: 15px 20px; display: block; }
+    nav a:hover { background: #66fcf1; color: #1f2833; }
+    section { padding: 20px; display: none; }
+    section.active { display: block; }
+    .card { background: #1f2833; padding: 15px; margin: 10px 0; border-radius: 8px; }
+    input, select, button { padding: 8px; margin: 5px 0; }
+    .avatar-preview { width: 100px; height: 100px; background: #45a29e; border-radius: 50%; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Rocket League Pro Gaming Hub</h1>
+</header>
+
+<nav>
+    <a href="#" data-target="home">Home</a>
+    <a href="#" data-target="profile">Profile</a>
+    <a href="#" data-target="training">Training Packs</a>
+    <a href="#" data-target="skills">Skills</a>
+    <a href="#" data-target="tournaments">Tournaments & Ranks</a>
+</nav>
+
+<section id="home" class="active">
+    <h2>Welcome to Rocket League Pro Hub</h2>
+    <p>Track your skills, customize your profile, and stay updated with tournaments and ranks!</p>
+</section>
+
+<section id="profile">
+    <h2>Profile Editor</h2>
+    <div class="card">
+        <div class="avatar-preview" id="avatarPreview"></div>
+        <label>Name: <input type="text" id="playerName" placeholder="Your Name"></label><br>
+        <label>Epic ID: <input type="text" id="epicID" placeholder="Your Epic ID"></label><br>
+        <label>Avatar Color: <input type="color" id="avatarColor" value="#45a29e"></label><br>
+        <button onclick="updateProfile()">Update Profile</button>
+    </div>
+</section>
+
+<section id="training">
+    <h2>Training Packs</h2>
+    <div class="card">
+        <p>• Aerial Control Practice</p>
+        <p>• Dribbling Challenge</p>
+        <p>• Speed Shots</p>
+        <p>• Custom Training Packs</p>
+    </div>
+</section>
+
+<section id="skills">
+    <h2>Skills</h2>
+    <div class="card">
+        <p>• Ball Control</p>
+        <p>• Shooting Accuracy</p>
+        <p>• Boost Management</p>
+        <p>• Rotation Awareness</p>
+    </div>
+</section>
+
+<section id="tournaments">
+    <h2>Tournaments & Ranks</h2>
+    <div class="card">
+        <p>Next Tournament: Rocket League Pro Cup</p>
+        <p>Simulated Rank: Diamond III</p>
+        <p>Live Leaderboard (Simulated):</p>
+        <ol>
+            <li>Player1 - Diamond III</li>
+            <li>Player2 - Platinum II</li>
+            <li>Player3 - Diamond II</li>
+        </ol>
+    </div>
+</section>
+
+<script>
+    // Navigation
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('section');
+    navLinks.forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            const target = link.getAttribute('data-target');
+            sections.forEach(sec => sec.classList.remove('active'));
+            document.getElementById(target).classList.add('active');
+        });
+    });
+
+    // Profile update
+    function updateProfile() {
+        const name = document.getElementById('playerName').value;
+        const epic = document.getElementById('epicID').value;
+        const color = document.getElementById('avatarColor').value;
+        const avatar = document.getElementById('avatarPreview');
+        avatar.style.backgroundColor = color;
+        alert(`Profile Updated!\nName: ${name}\nEpic ID: ${epic}`);
+    }
+</script>
+
+</body>
+</html>
